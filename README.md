@@ -27,3 +27,25 @@ UUID 를 코인 ID 로 활용하여 등록한 코인 정보를 DB 에서 조회�
 실시간 가격은 동일하게 [최근 24시간 통계 조회](https://gopax.github.io/API/index.html#24) API 를 호출하여 읽어옵니다.
 
 등록 당시 가격과 실시간 가격을 함께 확인할 수 있도록 응답을 구성하였습니다.
+
+## DB
+
+### DB 구성
+
+```sh
+$ docker-compose up -d
+```
+
+### 스키마
+
+```sql
+CREATE TABLE `coin` (
+  `id` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `current_at` datetime NOT NULL,
+  `price` bigint(20) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+```

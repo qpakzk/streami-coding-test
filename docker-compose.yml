@@ -1,0 +1,17 @@
+version: "3"
+services:
+  mariadb:
+    container_name: "streami-mariadb"
+    image: mariadb:latest
+    restart: always
+    ports:
+      - 3306:3306
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./db/init.sql:/data/application/init.sql
+    environment:
+      MARIADB_DATABASE: coin
+      MARIADB_USER: test
+      MARIADB_PASSWORD: test123
+      MARIADB_ROOT_USER: user
+      MARIADB_ROOT_PASSWORD: test123
